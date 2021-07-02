@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Product.delete_all
+# Product.delete_all
 (1..10).each do |i|
     Product.create!(title: "Seven Mobile App in Seven Weeks #{i}", 
         description: 
