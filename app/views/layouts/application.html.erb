@@ -20,6 +20,7 @@
     <div id='banner'>
       <%= image_tag("logo.jpeg", alter:"The pramatic Bookshelf")%>
       <span class='title'> <%= @page_title%> </span>
+      <%= render partial: "shared/count" if session[:count] > 5 %>
     </div>
     <div id='columns'>
       <div id='side'>
@@ -29,12 +30,13 @@
               <li> <a href="root_path">News</a>
                 <li> <a href="root_path">Contact</a>
                 </ul>
-                <span id='side-foot'> <%= render "shared/time"%> </span> <br>
-                <span id='side-foot'></span>
               </div>
               <div id='main'>
                 <%= yield %>
               </div>
             </div>
           </body>
+          <footer>
+            <div id='side-foot'></div>
+          </footer>
         </html>

@@ -14,93 +14,97 @@
  *= require_self
  */
 
-body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
+body,
+body > p,
+body > ol,
+body > ul,
+body > td {
+  margin: 8px !important;
+}
 #banner {
-    position: relative;
-    min-height: 100px;
-    background: #9c9;
-    padding: 10px;
-    border-bottom: 2px solid;
-    font: small-caps 40px/40px "Time New Roman", serif;
-    color: #282;
-    text-align: center;
+  position: relative;
+  min-height: 100px;
+  background: #9c9;
+  padding: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px "Time New Roman", serif;
+  color: #282;
+  text-align: center;
 
-    img{
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        width: 150px;
-        height: 100px;
-        border-radius: 5px;
-    }
+  img {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 150px;
+    height: 100px;
+    border-radius: 5px;
+  }
 }
 
-#notice{
-    color: 000 !important;
-    border: 2px solid red;
+#notice {
+  color: 000 !important;
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+
+#notice:empty {
+  display: none;
+}
+#columns {
+  background: #141;
+  display: flex;
+  #main {
     padding: 1em;
-    margin-bottom: 2em;
-    background-color: #f0f0f0;
-    font: bold smaller sans-serif;
-}
+    background: white;
+    flex: 1;
+  }
 
-#notice:empty{
-    display: none;
-}
-#columns{
+  #side {
+    padding: 1em 2em;
     background: #141;
-    display: flex;
-    #main{
-        padding: 1em;
-        background: white;
-        flex: 1;
-    }
-
-    #side{
-        padding: 1em 2em;
-        background: #141;
-        width: 100px;
-        position: relative;
-        ul{
-            padding-left: 15px;
-            li{
-                list-style: none;
-                a{
-                    color: #bfb;
-                    font-size: medium;
-                    text-decoration: none;
-                }
-                a:hover{
-                    color: #141;
-                    background: #bfb;
-                }
-            }
+    width: 100px;
+    position: relative;
+    ul {
+      padding-left: 15px;
+      li {
+        list-style: none;
+        a {
+          color: #bfb;
+          font-size: medium;
+          text-decoration: none;
         }
-        #side-foot{
-            color: #141;
-            bottom: 10px;
-            left: 0;
-            position: absolute;
-            background:#bfb;
-            font-size: large;
-            text-align: center;
-            line-height: 1.5;
+        a:hover {
+          color: #141;
+          background: #bfb;
         }
+      }
     }
+  }
+}
+#side-foot {
+  color: #141;
+  bottom: 10px;
+  background: #bfb;
+  font-size: small;
+  line-height: 1.5;
+  text-align: center;
+  
+}
+@media all and (max-width: 800px) {
+  #columns {
+    flex-direction: column-reverse;
+  }
 }
 
-@media all and (max-width: 800px){
-    #columns{
-        flex-direction: column-reverse;
-    }
-}
+@media all and (max-width: 500px) {
+  #banner {
+    height: 1em;
+  }
 
-@media all and (max-width: 500px){
-    #banner{
-        height: 1em;
-    }
-
-    #banner.title{
-        display: none;
-    }
+  #banner.title {
+    display: none;
+  }
 }
