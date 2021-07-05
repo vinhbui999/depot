@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# Product.delete_all
+Product.delete_all
 (1..10).each do |i|
-    Product.create!(title: "Seven Mobile App in Seven Weeks #{i}", 
+    Product.create!(title: "#{Faker::Company.name}", 
         description: 
             %{<p>
                 <em>Native Apps, Multiple Platforms</em>
@@ -18,6 +18,6 @@
                 out which cross-platform solution makes the most sense for your needs.
             </p>},
         image_url: "chair.png",
-        price: 26.00
+        price: Faker::Number.decimal(l_digits: 2)
     )
 end

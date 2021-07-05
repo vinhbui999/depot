@@ -56,3 +56,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'font-awesome-sass'
 gem 'jquery-rails', '4.4.0'
+gem 'jquery-ui-rails'
+gem 'faker'

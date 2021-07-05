@@ -6,7 +6,7 @@ class StoreControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select '#columns #side a', minimum: 4 #check minimum of 4 links
     assert_select "#main .entry", 3 #check the 3 elements with classname entry inside  
-    assert_select "h3", "Programming Ruby 1.9 "
+    assert_select "h3", "Programming Ruby 1.9"
     assert_select ".price", /\$[,\d]+\.\d\d/
   end
 
