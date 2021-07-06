@@ -30,6 +30,11 @@
     <%= form.label :pay_type %>
     <%= form.select :pay_type, Order.pay_types.keys, prompt: "Select a payment method" %>
   </div>
+  
+  <div class="field">
+    <%= form.label :ship_date %>
+    <%= form.text_field :ship_date %>
+  </div>
 
   <div class="actions">
     <%= form.submit "Place Order"%>

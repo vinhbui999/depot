@@ -26,11 +26,12 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
-
+    @order.ship_date = Time.now.to_s(:db)
     respond_to do |format|
       if @order.save
-        Cart.destroy(session[:card_id])
+        Cart.destroy(session[:cart_id])
         session[:card_id] = nil
+        OrderMailer.received(@order).deliver_later
         format.html { redirect_to store_index_url, notice: "Thank you for your order" }
         format.json { render :show, status: :created, location: @order }
       else
@@ -42,8 +43,10 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
+
     respond_to do |format|
       if @order.update(order_params)
+        OrderMailer.shipped(@order).deliver_later
         format.html { redirect_to @order, notice: "Order was successfully updated." }
         format.json { render :show, status: :ok, location: @order }
       else
