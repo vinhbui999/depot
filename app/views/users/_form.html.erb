@@ -16,7 +16,7 @@
         <%= form.label :name %>
         <%= form.text_field :name, size: 40 %>
       </div>
-      <% unless session[:user_id].nil? %>
+      <% if session[:update] %>
       <div class="field">
         <%= form.label :old_passwordm, "Old Password" %>
         <%= form.password_field :old_password , size: 40%>

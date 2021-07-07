@@ -30,4 +30,62 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      home: "Home"
+      question: "question"
+      news: "News"
+      contact: "Contact"
+      login: "Log in"
+      Orders: "Orders"
+      Products: "Products"
+      Users: "Users"
+      Logout: "Log out"
+
+  store:
+    index:
+      add_Cart: "Add To Cart"
+
+  carts:
+    cart:
+      checkout: "Check Out"
+      empty: "Empty Cart"
+      yourCart: "Your Cart"
+  number: 
+    currency:
+      format:
+        unit: "$" 
+        precision: 2 
+        separator: "." 
+        delimiter: "," 
+        format: "%u%n"
+  orders:
+    
+    new:
+      legend: "Please Enter Your Details"
+    form:
+      selectpay: "Select a payment method"
+      name: "Name"
+      address: "Address"
+      email: "Email"
+      paytype: "Pay Type"
+      shipdate: "Ship Date"
+      placeorder: "Place Order"
+      Check: "Check"
+      Credit Card: "Credit Card"
+      Purchase Order: "Purchase Order"
+  
+  activerecord:
+    errors:
+      messages:
+        inclusion: "Please select payment method"
+        blank: "Not allow blank"
+  error:
+    template:
+      body: "Errors: "
+      header:
+        one: "1 error"
+        other: "%{count} errors"
+  thanks: "Thanks you for order"
+  
+

@@ -1,0 +1,59 @@
+vn:
+  layouts:
+    application:
+      home: "Trang Chủ"
+      question: "Hỏi và Đáp"
+      news: "Tin Tức"
+      contact: "Liên Hệ"
+      login: "Đăng Nhập"
+      Orders: "Đặt Hàng"
+      Products: "Sản Phẩm"
+      Users: "Người Dùng"
+      Logout: "Đăng Xuất"
+
+  store:
+    index:
+      add_Cart: "Thêm vào giỏ hàng"
+
+  carts:
+    cart:
+      checkout: "Thanh Toán"
+      empty: "Xoá Giỏ Hàng"
+      yourCart: "Giỏ Hàng Của Bạn"
+  number: 
+    currency:
+      format:
+        unit: "VNĐ" 
+        precision: 2 
+        separator: "." 
+        delimiter: "," 
+        format: "%n %u"
+
+  orders:
+   
+    new:
+      legend: "Vui Lòng Nhập Thông Tin"
+    form:
+      selectpay: "Chọn Phương Thức Thanh Toán"
+      name: "Tên"
+      address: "Địa Chỉ"
+      email: "Email"
+      paytype: "Hình thức thanh toán"
+      shipdate: "Ngày vận chuyển"
+      placeorder: "Thanh Toán" 
+      Check: "Đã Chọn"
+      Credit Card: "Chuyển Khoản"
+      Purchase Order: "Thanh toán Khi Nhận"
+
+  activerecord:
+    errors:
+      messages:
+        inclusion: ": Chọn hình thức thanh toán"
+        blank: ": Không được để trống"
+  errors:
+    template:
+      body: "Lỗi: "
+      header:
+        one: "1 Lỗi"
+        other: "%{count} Lỗi"
+  thanks: "Cảm ơn bạn đã đặt hàng"

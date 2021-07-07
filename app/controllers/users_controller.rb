@@ -14,10 +14,12 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    session[:update] = false
   end
 
   # GET /users/1/edit
   def edit
+    session[:update] = true
   end
 
   # POST /users or /users.json
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to users_url, notice: "User #{@user.name} was successfully created." }
+        format.html { redirect_to users_url, locale: I18n.locale, notice: "User #{@user.name} was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -140,7 +140,7 @@ body > td {
   }
   form {
     label {
-      width: 7em;
+      width: 13em;
       float: left;
       text-align: right;
       padding-top: 0.2em;
@@ -159,4 +159,8 @@ body > td {
       display: none;
     }
   }
+}
+.locale {
+  float: right;
+  margin: -0.25em 0.1em;
 }
