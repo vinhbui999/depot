@@ -9,11 +9,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
-      $(function() {
-        setInterval(function() {
-            $('#side-foot').load('/store/get_time');
-        }, 1000);
-      }); //this for clock currently running
+      // $(function() {
+      //   setInterval(function() {
+      //       $('#side-foot').load('/store/get_time');
+      //   }, 1000);
+      // }); //this for clock currently running
     </script>
   </head>
   <body class="<%= controller.controller_name%>">

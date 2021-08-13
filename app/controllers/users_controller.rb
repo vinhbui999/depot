@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     @users = User.order(:name)
+    logger.debug("USers #{User.order(:name)}")
     #return index by name
   end
 
@@ -13,7 +14,8 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    # @user = User.new
+    @form = UserForm.new
     session[:update] = false
   end
 
@@ -24,16 +26,23 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        session[:user_id] = @user.id
-        format.html { redirect_to users_url, locale: I18n.locale, notice: "User #{@user.name} was successfully created." }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @form = UserForm.new(user_params)
+    # @user = User.new(user_params)
+    # respond_to do |format|
+    #   if @user.save
+    #     session[:user_id] = @user.id
+    #     format.html { redirect_to users_url, locale: I18n.locale, notice: "User #{@user.name} was successfully created." }
+    #     format.json { render :show, status: :created, location: @user }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @user.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    if @form.submit
+      session[:user_id] = @form.user_id
+      redirect_to users_url, locale: I18n.locale, notice: "User #{@form.name} was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -58,7 +67,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user = User.find_by(id: session[:user_id])
+    # @user = User.find_by(id: session[:user_id])
+    @user = User.find_by(params[:id])
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
@@ -79,7 +89,7 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation)
+    params.require(:user_form).permit(:name, :password, :password_confirmation)
   end
 
 end
