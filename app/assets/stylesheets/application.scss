@@ -24,11 +24,11 @@ body > td {
 #banner {
   position: relative;
   min-height: 100px;
-  background: #9c9;
+  background: #00628B;
   padding: 10px;
-  border-bottom: 2px solid;
-  font: small-caps 40px/40px "Time New Roman", serif;
-  color: #282;
+  border-bottom: 2px solid ;
+  font: small-caps 70px/90px "Time New Roman", serif;
+  color: #E6E6DC;
   text-align: center;
 
   img {
@@ -54,17 +54,17 @@ body > td {
   display: none;
 }
 #columns {
-  background: #141;
+  background: #00628B;
   display: flex;
   #main {
     padding: 1em;
-    background: white;
+    background:  #E6E6DC;
     flex: 1;
   }
 
   #side {
     padding: 1em 2em;
-    background: #141;
+    background: #00628B;
     // width: 100px;
     position: relative;
 
@@ -90,13 +90,13 @@ body > td {
       li {
         list-style: none;
         a {
-          color: #bfb;
+          color: #E6E6DC;
           font-size: medium;
           text-decoration: none;
         }
         a:hover {
-          color: #141;
-          background: #bfb;
+          color: rgb(210, 247, 210);
+          background: transparent;
         }
       }
     }
@@ -163,4 +163,6 @@ body > td {
 .locale {
   float: right;
   margin: -0.25em 0.1em;
+  height: 10px;
+  font-size: small;
 }

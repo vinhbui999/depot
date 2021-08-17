@@ -3,7 +3,7 @@ class UserForm
 
     validate :user_is_valid
     validates :name, :password, :password_confirmation, presence: true
-    attr_accessor :name, :password, :password_confirmation, :user_id
+    attr_accessor :name, :password, :password_confirmation, :user_id, :current_user
 
     def initialize(params = {})
         @user = User.new(params)
@@ -14,6 +14,7 @@ class UserForm
         return false if invalid?
         @user.save
         @user_id = @user.id
+        @current_user = @user
     end
 
     def user_is_valid

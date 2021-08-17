@@ -60,3 +60,6 @@ gem 'jquery-ui-rails'
 gem 'faker'
 gem 'bcrypt'
 gem 'pg'
+gem 'activeadmin'
+gem "devise"
+gem 'formtastic', '~> 4.0'

@@ -3,7 +3,9 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: [:new]
-  skip_before_action :authorize, only: [:new, :create]
+  before_action :authorize, only: [:index, :edit, :destroy, :update]
+  before_action :get_owner, only: [:new, :create]
+  before_action :order_index, only: :new
 
   # GET /orders or /orders.json
   def index
@@ -16,7 +18,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
+    @order = @userOwner.orders.build(Order.new.attributes)
   end
 
   # GET /orders/1/edit
@@ -25,26 +27,22 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = @userOwner.orders.build(order_params)
     @order.add_line_items_from_cart(@cart)
+    @order.cart_id = @cart.id
     @order.ship_date = Time.now.to_s(:db)
-    respond_to do |format|
-      if @order.save
-        Cart.destroy(session[:cart_id])
-        session[:card_id] = nil
-        OrderMailer.received(@order).deliver_later
-        format.html { redirect_to store_index_url, notice: t('.thanks')}
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    if @order.save
+      @cart.update(order_id: @order.id)
+      session[:cart_id] = nil
+      OrderMailer.received(@order).deliver_later
+      redirect_to store_index_path, notice: t(".thanks")
+    else
+      redirect_to new_order_url
     end
   end
 
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
-
     respond_to do |format|
       if @order.update(order_params)
         OrderMailer.shipped(@order).deliver_later
@@ -59,8 +57,8 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
-    logger.debug("hereeeeee")
     @order = Order.find(params[:id])
+    @cart = Cart.find(@order.cart_id)
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
@@ -69,19 +67,27 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
-    end
+  # Only allow a list of trusted parameters through.
+  def order_params
+    params.require(:order).permit(:name, :address, :email, :pay_type)
+  end
 
-    def ensure_cart_isnt_empty
-      if @cart.line_items.empty?
-        redirect_to store_index_url, notice: "Your cart is empty"
-      end
+  def ensure_cart_isnt_empty
+    if @cart.line_items.empty?
+      redirect_to store_index_url, notice: "Your cart is empty"
     end
+  end
+
+  def get_owner
+    @userOwner = User.find(session[:user_id])
+  end
+
+  def order_index
+    @index = @userOwner.orders.last.nil? ? "1" : (@userOwner.orders.last.name.to_i + 1).to_s
+  end
 end

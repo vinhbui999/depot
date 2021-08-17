@@ -24,6 +24,11 @@
   <%= @order.ship_date %>
 </p>
 
+<p>
+  <strong>CartID:</strong>
+  <%= @order.cart_id %>
+</p>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
 <%= button_to 'Empty order', order_url(@order), method: :delete, data: { confirm: "Are you sure?" } %>

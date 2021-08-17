@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  skip_before_action :authorize, only: [:new, :create]
+  before_action :authorize, only: [:index, :edit, :update, :destroy]
   # GET /users or /users.json
   def index
     @users = User.order(:name)
-    logger.debug("USers #{User.order(:name)}")
     #return index by name
   end
 

@@ -6,49 +6,49 @@
 @import "font-awesome";
 
 .store {
-    h1{
-        margin: 0;
-        padding-bottom: 0.5em;
-        font: 150% sans-serif;
-        color: #226;
-        border-bottom: 3px double #77d;
-    }
+  h1 {
+    margin: 0;
+    padding-bottom: 0.5em;
+    font: 200% sans-serif;
+    color: #00628B;
+    border-bottom: 3px double #00628B;
+  }
 
   .entry {
     overflow: auto;
     margin-top: 1em;
-    border-bottom: 1px dotted #77d;
+    border-bottom: 1px dotted #00628B;
     min-height: 100px;
 
-    img{
-        width: 80px;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        position: absolute;
+    img {
+      width: 80px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      position: absolute;
     }
-    h3{
-        font-size: 120%;
-        font-family: sans-serif;
-        margin-left: 100px;
-        margin-bottom: 2px;
-        margin-top: 0px;
-        color: #227;
+    h3 {
+      font-size: 130%;
+      font-family: sans-serif;
+      margin-left: 100px;
+      margin-bottom: 2px;
+      margin-top: 0px;
+      color: #00628B;
     }
-    p, div.price_line{
-        margin-left: 100px;
-        margin-top: 0.5em;
-        margin-bottom: 0.8em;
-        form, div{
-            display: inline;
-        }
+    p,
+    div.price_line {
+      margin-left: 100px;
+      margin-top: 0.5em;
+      margin-bottom: 0.8em;
+      form,
+      div {
+        display: inline;
+      }
     }
-    .price{
-        color: #e29829;
-        font-weight: bold;
-        margin-right: 3em;
+    .price {
+      color: #81A594;
+      font-weight: bold;
+      margin-right: 3em;
     }
+
   }
-
-
-
 }

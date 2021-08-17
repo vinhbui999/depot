@@ -11,6 +11,8 @@ class Product < ApplicationRecord
         message: "Must be a url for gif, jpg or png image."
     }
 
+    DEFAULT_IMG = "chair.png".freeze
+
     private
     def ensure_not_referenced_by_any_line_item
         unless line_items.empty?

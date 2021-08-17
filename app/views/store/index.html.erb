@@ -6,10 +6,10 @@
       <div class ="entry">
         <%= image_tag(product.image_url)%>
         <h3> <%= product.title %> </h3>
-        <%= sanitize(product.description)%>
+        <p><%= product.description %></p>
         <div class="price_line">
           <span class='price'><%= number_to_currency(exchange(product.price, I18n.locale)) %> </span>
-          <%= button_to t('.add_Cart'), line_items_url(product_id: product, locale: I18n.locale), remote: true%>
+          <%= button_to t('.add_Cart'), line_items_url(product_id: product, locale: I18n.locale), remote: true, id:"btn-default"%>
         </div>
       </div>
     <% end %>

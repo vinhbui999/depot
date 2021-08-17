@@ -3,46 +3,74 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .products {
-    table{
-        border-collapse: collapse;
+  h1 {
+    margin: 0;
+    padding-bottom: 0.5rem;
+    font: 200% sans-serif;
+    color: #00628b;
+    border-bottom: 3px double #00628b;
+  }
+
+  table {
+    border-collapse: collapse;
+    tr {
+      padding: 5px;
+      vertical-align: top;
     }
-    table tr td {
-        padding: 5px;
-        vertical-align: top;
+    td {
+      padding: 2px;
+      vertical-align: top;
+    }
+  }
+
+  .list_image {
+    width: 70px;
+    height: 70px;
+    padding-left: 10px;
+    vertical-align: middle;
+  }
+
+  .list_description {
+      vertical-align: middle;
+    width: 60%;
+    dl {
+      margin: 0;
     }
 
-    .list_image{
-        width: 60px;
-        height: 70px;
+    dt {
+      color: #00628b;
+      font-weight: bold;
+      font-size: larger;
     }
-
-    .list_description{
-        width: 60%;
-        dl{
-            margin: 0;
-        }
-
-        dt{
-            color: #244;
-            font-weight: bold;
-            font-size: larger;
-        }
-        dd{
-            margin: 0;
-        }
+    dd {
+      margin: 0;
     }
+  }
 
-    .list_actions{
-        font-size: x-small;
-        text-align: right;
-        padding-left: 1em;
+  .list_actions {
+    font-size: medium;
+    text-align: center;
+    vertical-align: middle;
+    a {
+      color: #00628b;
+      font-size: medium;
+      text-decoration: none;
+      background-color: transparent;
     }
+    a:hover {
+      color: #81a594;
+      font-size: medium;
+      text-decoration: none;
+      background-color: transparent;
+    }
+  }
 
-    .list_line_even{
-        background: #e0f8f8;
-    }
+  .list_line_even {
+    border-bottom: 2px solid #00628b;
+    background-color: #d3eee1;
+  }
 
-    .list_line_odd{
-        background: #f8b0f8;
-    }
+  .list_line_odd {
+    border-bottom: 2px solid #00628b;
+  }
 }

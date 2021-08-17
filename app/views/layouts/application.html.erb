@@ -16,18 +16,18 @@
       // }); //this for clock currently running
     </script>
   </head>
-  <body class="<%= controller.controller_name%>">
+  <body class="<%= controller.controller_name %>">
     <div id='banner'>
       <%= form_tag store_index_url, class: 'locale' do%>
         <%=select_tag 'set_locale',
           options_for_select(LANGUAGES, I18n.locale.to_s),
           onchange: 'this.form.submit()'
-      %>
+        %>
         <%= submit_tag 'submit'%>
         <%= javascript_tag "$('.locale input').hide()"%>
       <% end %>
       <%= image_tag("logo.jpeg", alter:"The pramatic Bookshelf")%>
-      <span class='title'> <%= @page_title%> </span>
+      <span class='title'> Pragprog Books Online Store </span>
       <%# <%= render partial: "shared/count" if session[:count]>5 %>
     </div>
     <div id='columns'>
@@ -41,7 +41,7 @@
           <li> <%=link_to t('.home'), store_index_url(locale: I18n.locale) %> </li>
           <li> <a href="root_path"><%=t('.question')%></a> </li>
           <li> <a href="root_path"><%=t('.news')%></a> </li>
-          <li> <a href="root_path"><%=t('.contact')%></a> </li>
+          <li><%= link_to t('.contact'), users_path(locale: I18n.locale) %></li>
           <%if session[:user_id].nil? %>
             <li>
               <%=link_to t(".login"), login_url(locale: I18n.locale)%>
@@ -52,9 +52,9 @@
           <ul>
             <li><%= link_to t('.Orders'), orders_path(locale: I18n.locale) %></li>
             <li><%= link_to t('.Products'), products_path(locale: I18n.locale) %></li>
-            <li><%= link_to t('.Users'), users_path(locale: I18n.locale) %></li>
+            <li><%= link_to t('.profile'), user_url(locale: I18n.locale, id: session[:user_id]) %></li>
           </ul>
-          <%= button_to t('.Logout'), logout_path, method: :delete %> <% end %>
+          <%= button_to t('.Logout'), logout_path, method: :delete , id:"btn-default"%> <% end %>
       </div>
       <div id='main'>
         <%= yield %>

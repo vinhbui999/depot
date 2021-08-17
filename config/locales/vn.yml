@@ -10,6 +10,7 @@ vn:
       Products: "Sản Phẩm"
       Users: "Người Dùng"
       Logout: "Đăng Xuất"
+      profile: "Thông tin của tôi"
 
   store:
     index:
@@ -30,7 +31,8 @@ vn:
         format: "%n %u"
 
   orders:
-   
+    create:
+      thanks: "Cảm ơn vì đơn hàng của bạn."
     new:
       legend: "Vui Lòng Nhập Thông Tin"
     form:

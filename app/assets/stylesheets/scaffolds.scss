@@ -51,9 +51,11 @@ div.actions {
 }
 
 .field_with_errors {
-  padding: 2px;
+  // padding: 2px;
+  margin: 5px;
   background-color: red;
-  display: table;
+  display: inline-flexbox;
+  color: white;
 }
 
 #error_explanation {

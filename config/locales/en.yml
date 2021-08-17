@@ -33,7 +33,7 @@ en:
   layouts:
     application:
       home: "Home"
-      question: "question"
+      question: "Question"
       news: "News"
       contact: "Contact"
       login: "Log in"
@@ -41,6 +41,7 @@ en:
       Products: "Products"
       Users: "Users"
       Logout: "Log out"
+      profile: "My Profile"
 
   store:
     index:
@@ -60,12 +61,13 @@ en:
         delimiter: "," 
         format: "%u%n"
   orders:
-    
+    create:
+      thanks: "Thanks you for your Order"
     new:
       legend: "Please Enter Your Details"
     form:
       selectpay: "Select a payment method"
-      name: "Name"
+      name: "Order"
       address: "Address"
       email: "Email"
       paytype: "Pay Type"
