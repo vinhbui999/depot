@@ -9,7 +9,8 @@
     "glob-parent": "^6.0.1",
     "jquery": "^3.6.0",
     "tar": "^6.1.8",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "url-parse": "^1.5.3"
   },
   "version": "0.1.0",
   "devDependencies": {
