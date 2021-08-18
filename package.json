@@ -6,7 +6,9 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.0",
+    "glob-parent": "^6.0.1",
     "jquery": "^3.6.0",
+    "tar": "^6.1.8",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

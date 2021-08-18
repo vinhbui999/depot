@@ -63,3 +63,4 @@ gem 'pg'
 gem 'activeadmin'
 gem "devise"
 gem 'formtastic', '~> 4.0'
+gem 'addressable', '~> 2.7'
