@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update ]
   before_action :authorize, only: [:index, :edit, :update, :destroy]
+  before_action :validate_user, except: %i[new create index]
   # GET /users or /users.json
   def index
     @users = User.order(:name)

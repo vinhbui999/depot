@@ -39,8 +39,6 @@
         <% end %>
         <ul>
           <li> <%=link_to t('.home'), store_index_url(locale: I18n.locale) %> </li>
-          <%# <li> <a href="root_path"><%=t('.question')%>
-          <%# <li> <a href="root_path"><%=t('.news')%>
           <li><%= link_to t('.contact'), users_path(locale: I18n.locale) %></li>
           <%if session[:user_id].nil? %>
             <li>

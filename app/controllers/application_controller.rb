@@ -29,4 +29,15 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     { :locale => I18n.locale }
   end
+
+  def validate_user
+    begin
+      tmp = User.find(params[:id])
+    rescue
+      session[:user_id] = nil
+      session[:update] = false
+      redirect_to store_index_url, notice: "User not exist."
+    else
+    end
+  end
 end

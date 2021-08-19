@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   # root "store#index", as: "store_index" #paying customer
 
   get "store/get_time"
-  # scope "(:locale)" do 
+  scope "(:locale)" do 
     resources :orders
     resources :line_items
     resources :carts
     root "store#index", as: "store_index", via: :all   
-  # end
+  end
 end

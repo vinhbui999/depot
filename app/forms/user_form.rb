@@ -11,17 +11,22 @@ class UserForm
     if params[:user_id].nil?
       @user = User.new(params)
     else
-      @user = User.find(params[:user_id])
-      @user_id = @user.id
-      @name = @user.name
-      @email = @user.email
-      @current_user = @user
+      begin
+        @user = User.find(params[:user_id])
+      rescue ActiveRecord::RecordNotFound
+        @user = nil
+      else
+        @user_id = @user.id
+        @name = @user.name
+        @email = @user.email
+        @current_user = @user
+      end
     end
     super(params)
   end
 
   def submit
-    return false if invalid?(create)
+    return false if invalid?(:create)
     @user.email = @user.email.downcase
     @user.save
     @user_id = @user.id
@@ -38,11 +43,10 @@ class UserForm
 
   def user_is_valid(context = nil)
     if @user.invalid?(context)
-        @user.errors.each do |attribute, messages|
-            errors.add(attribute, messages)
-        end
+      @user.errors.each do |attribute, messages|
+        errors.add(attribute, messages)
+      end
     end
-
   end
 
   def update_form
