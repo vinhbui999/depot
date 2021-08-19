@@ -1,38 +1,77 @@
 <div class='depot_form'>
-  <%= form_for user, url: users_path do |form| %>
-    <% if user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-        <ul>
-          <% user.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <fieldset>
-      <legend> Enter User Details </legend>
-      <div class="field">
-        <%= form.label :name %>
-        <%= form.text_field :name, size: 40 %>
-      </div>
-      <% if session[:update] %>
-      <div class="field">
-        <%= form.label :old_password, "Old Password" %>
-        <%= form.password_field :old_password , size: 40%>
-      </div>
+  <% if session[:update] %>
+    <%= form_for user, url: user_path, method: :patch do |form| %>
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-      <div class="field">
-        <%= form.label :password %>
-        <%= form.password_field :password , size: 40%>
-      </div>
-      <div class="field">
-        <%= form.label :password_confirmation, "Confirm " %>
-        <%= form.password_field :password_confirmation, size: 40 %>
-      </div>
-      <div class="actions">
-        <%= form.submit "Create User" %>
-      </div>
-    </fieldset>
+      <fieldset>
+        <legend> Update Information</legend>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, size: 40, required: true %>
+        </div>
+        <div>
+          <%= form.label :email %>
+          <%= form.text_field :email, required: true, size: 255, readonly: true%>
+        </div>
+        <div class="field">
+          <%= form.label :old_password, "Old Password" %>
+          <%= form.password_field :old_password , size: 40%>
+        </div>
+        <div class="field">
+          <%= form.label :password %>
+          <%= form.password_field :password , size: 40, required: true%>
+        </div>
+        <div class="field">
+          <%= form.label :password_confirmation, "Confirm " %>
+          <%= form.password_field :password_confirmation, size: 40, required: true %>
+        </div>
+        <div class="actions">
+          <%= form.submit "Update"%>
+        </div>
+      </fieldset>
+    <% end %>
+  <% else %>
+    <%= form_for user, url: users_path do |form| %>
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <fieldset>
+        <legend> Enter Information </legend>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, size: 40, required: true %>
+        </div>
+        <div>
+          <%= form.label :email %>
+          <%= form.text_field :email, required: true, size: 255%>
+        </div>
+        <div class="field">
+          <%= form.label :password %>
+          <%= form.password_field :password , size: 40, required: true%>
+        </div>
+        <div class="field">
+          <%= form.label :password_confirmation, "Confirm " %>
+          <%= form.password_field :password_confirmation, size: 40, required: true %>
+        </div>
+        <div class="actions">
+          <%= form.submit "Create User"%>
+        </div>
+      </fieldset>
+    <% end %>
   <% end %>
 </div>

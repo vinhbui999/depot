@@ -3,15 +3,16 @@
 <table>
   <thead>
     <tr>
-      <th >Order</th>
+      <th>Index</th>
       <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
+
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= @users.index(user)%> </td>
+        <td><%= @users.index(user) + 1%> </td>
         <td><%= user.name %></td>
         <td><%= link_to 'Show', user, locale: I18n.locale %></td>
       </tr>

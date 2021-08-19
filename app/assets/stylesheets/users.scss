@@ -10,17 +10,20 @@
     border-bottom: 3px double #00628b;
   }
   table {
+    border-collapse: collapse;
     th {
-      text-align: center;
+      background-color: #93bda9;
+      border: 1px solid #e6e6dc;
     }
     tr {
+      padding: 5px;
       vertical-align: top;
+      // background-color: #93bda9;
     }
     td {
-      padding: 2px;
-      vertical-align: middle;
-
-    font: 120% sans-serif;
+      border: 1px solid #e6e6dc;
+      padding: 5px;
+      vertical-align: top;
     }
   }
   p {

@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
-  <%= @user.name %>
+  <%= @userForm.name %>
 </p>
-<% if @user.id == session[:user_id]%>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
+<p>
+  <strong>Email:</strong>
+  <%= @userForm.email %>
+</p>
+<% if @userForm.user_id.to_i == session[:user_id]%>
+  <%= link_to 'Edit', edit_user_path(@userForm.current_user) %> |
 <% end %>
 <%= link_to 'Back', users_path %>

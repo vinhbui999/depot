@@ -1,20 +1,16 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
-  <%= @order.name %>
+  <%= "Order #" + @order.name %>
 </p>
-
 <p>
   <strong>Address:</strong>
   <%= @order.address %>
 </p>
-
 <p>
   <strong>Email:</strong>
   <%= @order.email %>
 </p>
-
 <p>
   <strong>Pay type:</strong>
   <%= @order.pay_type %>
@@ -23,12 +19,21 @@
   <strong>Ship Date:</strong>
   <%= @order.ship_date %>
 </p>
-
-<p>
-  <strong>CartID:</strong>
-  <%= @order.cart_id %>
-</p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
+<div>
+  <table>
+    <tr>
+      <th>Quanities</th>
+      <th>Product</th>
+      <th>Price</th>
+    </tr>
+    <%= render @line_items %>
+    <tr class="total_line">
+      <th colspan="2">Total</th>
+      <td class="total_cell"><%= number_to_currency(exchange(@line_items.to_a.sum { |item| item.total_price * item.quantity }, I18n.locale)) %></td>
+    </tr>
+  </table>
+</div>
+<%= link_to 'Edit Deliver Information', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
-<%= button_to 'Empty order', order_url(@order), method: :delete, data: { confirm: "Are you sure?" } %>
+<br>
+<%= button_to 'Cancel this order', order_url(@order), method: :delete, data: { confirm: "Are you sure?" } %>

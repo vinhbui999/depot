@@ -4,20 +4,15 @@ ActiveAdmin.register Order do
     actions :all, except: %i[new edit]
     permit_params :name, :address, :email, :pay_type, :line_items, :user, :products, :cart_id
 
-    controller do
-        def new
-          @order = Order.new()
-        end
-      end
-
     index do
         selectable_column
-        column :name
+        column :id
+        column "Order Name", :name
         column :address
         column :email
         column :pay_type
         column :ship_date
-        column :cart_id
+        column :user
         actions
     end
 
@@ -30,20 +25,8 @@ ActiveAdmin.register Order do
             row :email
             row :pay_type
             row :ship_date
+            row :cart
+            row :user
         end
-    end
-
-    form do |f|
-        f.semantic_errors
-        f.inputs do
-            f.input :user, require: true
-            f.input :name
-            f.input :address, input_html: {rows: 1, cols: 40}
-            f.input :email
-            f.input :pay_type
-            f.input :ship_date
-            f.input :line_item
-        end
-        f.actions
     end
 end

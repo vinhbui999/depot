@@ -10,17 +10,24 @@
         border-bottom: 3px double #00628B;
     }
 
+    p{
+        color:  #00628B;
+        font: 100% sans-serif;
+    }
+
     table{
-        // border-collapse: collapse;
-        thead{
-            background-color:  #81A594;
+        border-collapse: collapse;
+        th{
+            background-color:  #93bda9;
+            border: 1px solid #E6E6DC;
         }
         tr {
             padding: 5px;
             vertical-align: top;
-            background-color:  #81A594;
+            background-color:  #93bda9;
         }
         td {
+            border: 1px solid #E6E6DC;
             padding: 5px;
             vertical-align: top;
         }

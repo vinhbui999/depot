@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   before_action :authorize, only: [:index, :edit, :destroy, :update]
   before_action :get_owner, only: [:new, :create]
   before_action :order_index, only: :new
+  before_action :list_products, only: %i[show]
 
   # GET /orders or /orders.json
   def index
@@ -89,5 +90,10 @@ class OrdersController < ApplicationController
 
   def order_index
     @index = @userOwner.orders.last.nil? ? "1" : (@userOwner.orders.last.name.to_i + 1).to_s
+  end
+
+  def list_products
+    @line_items = LineItem.where(order_id: @order.id, cart_id: @order.cart_id)
+    logger.debug("List items #{@line_items.ids}")
   end
 end

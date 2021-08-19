@@ -50,12 +50,11 @@ div.actions {
   color: green;
 }
 
-.field_with_errors {
-  // padding: 2px;
+.field_with_errors > label{
+  padding: 2px;
   margin: 5px;
-  background-color: red;
-  display: inline-flexbox;
-  color: white;
+  color: red;
+  border-bottom: 1px red solid;
 }
 
 #error_explanation {

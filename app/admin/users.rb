@@ -5,7 +5,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :name
-    column :orders
+    column :email
     actions
   end
 
@@ -15,6 +15,8 @@ ActiveAdmin.register User do
     attributes_table_for user do
       row :id
       row :name
+      row :email
+      row :orders
     end
   end
 
@@ -25,6 +27,7 @@ ActiveAdmin.register User do
         f.semantic_errors *f.object.errors.keys
         f.inputs new_record: false do
           f.input :name
+          f.input :email
           f.input :password, as: :hidden, input_html: { value: User::DEFAULT_PASS }
           f.input :password_confirmation, as: :hidden, input_html: { value: User::DEFAULT_PASS }
         end
@@ -32,6 +35,7 @@ ActiveAdmin.register User do
     else
       f.inputs "Update User" do
         f.input :name, require: true
+        f.input :email, require: true
       end
     end
     f.actions

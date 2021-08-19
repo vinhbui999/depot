@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update ]
   before_action :authorize, only: [:index, :edit, :update, :destroy]
   # GET /users or /users.json
   def index
@@ -26,17 +26,6 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @form = UserForm.new(user_params)
-    # @user = User.new(user_params)
-    # respond_to do |format|
-    #   if @user.save
-    #     session[:user_id] = @user.id
-    #     format.html { redirect_to users_url, locale: I18n.locale, notice: "User #{@user.name} was successfully created." }
-    #     format.json { render :show, status: :created, location: @user }
-    #   else
-    #     format.html { render :new, status: :unprocessable_entity }
-    #     format.json { render json: @user.errors, status: :unprocessable_entity }
-    #   end
-    # end
     if @form.submit
       session[:user_id] = @form.user_id
       redirect_to users_url, locale: I18n.locale, notice: "User #{@form.name} was successfully created."
@@ -48,25 +37,22 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     user = User.find(session[:user_id])
-    if user && user.authenticate(params[:user][:old_password])
-      respond_to do |format|
-        if @user.update(user_params)
-          format.html { redirect_to users_url, notice: "User #{@user.name} was successfully updated." }
-          format.json { render :show, status: :ok, location: @user }
+    if user && user.authenticate(params[:user_form][:old_password])
+        if @userForm.update(user_params.merge(id: params[:id]))
+          redirect_to users_url, notice: "User #{@userForm.name} was successfully updated."
         else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+          logger.debug("Errors #{@userForm.errors.count}")
+
+          render :edit, status: :unprocessable_entity
       end
     else
-      @user.errors.add(:base, "Invalid old password. Please input again")
+      @userForm.errors.add(:base, "Invalid old password!!!")
       render :edit
     end
   end
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    # @user = User.find_by(id: session[:user_id])
     @user = User.find_by(params[:id])
     @user.destroy
     respond_to do |format|
@@ -83,12 +69,11 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    @userForm = UserForm.new(user_id: params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user_form).permit(:name, :password, :password_confirmation)
+    params.require(:user_form).permit(:name, :password, :password_confirmation, :email)
   end
-
 end

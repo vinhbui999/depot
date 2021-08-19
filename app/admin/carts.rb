@@ -1,13 +1,14 @@
 ActiveAdmin.register Cart do
   config.filters = false
   config.clear_action_items!
-  actions :all, except: %i[new edit]
-  permit_params :id, :order_id
+  actions :all, except: %i[new edit destroy]
+  permit_params :id, :order_id, :line_items, :line_items_id
 
   index do
     selectable_column
     column :id
-    column :order_id
+    column :order
+    column :line_items
     actions
   end
 
@@ -15,10 +16,13 @@ ActiveAdmin.register Cart do
     cart = Cart.find(params[:id])
 
     attributes_table_for cart do
-      row :order_id
       row :id
+      row :order
       row :created_at
       row :updated_at
+      row :line_items do |line|
+        line.line_items
+      end
     end
   end
 end
