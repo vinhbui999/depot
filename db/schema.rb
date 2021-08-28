@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2021_08_18_061919) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
@@ -41,18 +44,18 @@ ActiveRecord::Schema.define(version: 2021_08_18_061919) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "order_id"
+    t.bigint "order_id"
     t.index ["order_id"], name: "index_carts_on_order_id", unique: true
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "cart_id"
+    t.bigint "product_id", null: false
+    t.bigint "cart_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity", default: 1
     t.decimal "product_price", precision: 8, scale: 2
-    t.integer "order_id"
+    t.bigint "order_id"
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
@@ -65,11 +68,9 @@ ActiveRecord::Schema.define(version: 2021_08_18_061919) do
     t.integer "pay_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.time "ship_date", default: "2000-01-01 10:15:15"
-    t.integer "user_id", null: false
-    t.integer "cart_id"
+    t.time "ship_date", default: "2000-01-01 09:00:00"
+    t.bigint "cart_id"
     t.index ["cart_id"], name: "index_orders_on_cart_id", unique: true
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -86,13 +87,12 @@ ActiveRecord::Schema.define(version: 2021_08_18_061919) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "order_id"
+    t.bigint "order_id"
     t.string "email"
     t.index ["order_id"], name: "index_users_on_order_id"
   end
 
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
-  add_foreign_key "orders", "users"
   add_foreign_key "users", "orders"
 end
