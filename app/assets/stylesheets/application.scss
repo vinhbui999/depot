@@ -20,6 +20,7 @@ body > ol,
 body > ul,
 body > td {
   margin: 8px !important;
+  min-height: 100%;
 }
 #banner {
   position: relative;
@@ -104,9 +105,9 @@ body > td {
   }
 }
 #side-foot {
-  color: #141;
+  color: #E6E6DC;
   bottom: 10px;
-  background: #bfb;
+  background: #00628B;
   font-size: small;
   line-height: 1.5;
   text-align: center;
@@ -166,4 +167,8 @@ body > td {
   margin: -0.25em 0.1em;
   height: 10px;
   font-size: small;
+}
+
+#main {
+  height: 100%;
 }

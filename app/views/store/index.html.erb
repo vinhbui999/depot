@@ -1,11 +1,22 @@
 <p id="notice"><%= notice %></p>
-<h1 id="store_head"> Your Pramatic Catalog</h1>
+<h1 id="store_head"> Pramatic Catalog</h1>
+<div id='store-search'>
+  <%= form_tag(store_index_url, method: :get, locale: I18n.locale) do %>
+    <%= text_field_tag :search, nil, placeholder: "Search..."%>
+    <%= submit_tag "Search"%>
+  <% end %>
+  <% if flash[:error]%>
+    <span>
+      <%= flash[:error] %>
+    </span>
+  <% end %>
+</div>
 <% cache @products do%>
   <% @products.each do |product|%>
     <% cache product do %>
       <div class ="entry">
         <%= image_tag(product.image_url)%>
-        <h3> <%= product.title %> </h3>
+        <h3> <%= link_to product.title, product %> </h3>
         <p><%= product.description %></p>
         <div class="price_line">
           <span class='price'><%= number_to_currency(exchange(product.price, I18n.locale)) %> </span>
@@ -14,4 +25,5 @@
       </div>
     <% end %>
   <% end %>
+  <%= paginate @products%>
 <% end %>

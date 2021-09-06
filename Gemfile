@@ -71,3 +71,4 @@ gem "devise"
 gem 'formtastic', '~> 4.0'
 gem 'addressable', '~> 2.7'
 gem "actionpack", ">= 6.1.4.1"
+gem 'kaminari'
