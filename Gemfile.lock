@@ -280,6 +280,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails (= 4.4.0)
   jquery-ui-rails
+  kaminari
   listen (~> 3.3)
   pg
   puma (~> 5.0)

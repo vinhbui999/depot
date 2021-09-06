@@ -14,7 +14,7 @@
         <%= label_tag :password, 'Password:' %>
         <%= password_field_tag :password, params[:password], required: true %> </div>
       <div>
-        <%= submit_tag "Login" %> </div>
+        <%= submit_tag "Login" , id:"btn-log"%> </div>
     </fieldset>
   <% end %> 
   <%= link_to "Do not have account? Create one", new_user_url%>

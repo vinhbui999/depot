@@ -8,4 +8,16 @@ body{
     #btn-default:hover{
         background-color: #6c8b7d;
     }
+
+    #btn-log{
+        background-color: #508b70;
+        background-image: none;
+        color: #f7f7ef;
+        box-shadow: none;
+        transition: 0.5s;
+        &:hover{
+            background-color: rgb(97, 154, 156);
+            color: #fafaf0;
+        }
+    }
 }

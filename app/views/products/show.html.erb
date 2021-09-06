@@ -12,7 +12,7 @@
 
 <p>
   <strong>Image url:</strong>
-  <%= @product.image_url %>
+  <%= image_tag @product.image_url %>
 </p>
 
 <p>
@@ -20,4 +20,5 @@
   <%= @product.price %>
 </p>
 
-<%= link_to 'Back', products_path %>
+<%# <%= link_to 'Back', products_path %>
+<%= link_to "Back", store_index_url%>

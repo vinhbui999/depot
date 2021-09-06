@@ -6,33 +6,77 @@
 @import "font-awesome";
 
 .store {
+  // height: 100% !important;
   h1 {
     margin: 0;
     padding-bottom: 0.5em;
-    font: 200% sans-serif;
-    color: #00628B;
-    border-bottom: 3px double #00628B;
+    font: 180% sans-serif;
+    font-weight: bold;
+    color: #00628b;
+    border-bottom: 3px double #00628b;
+  }
+
+  #store-search {
+    padding: 10px 5px 5px 5px;
+    text-align: center;
+    form {
+      input:nth-child(1) {
+        width: 50% !important;
+        border-radius: 5px;
+      }
+      input:nth-child(2) {
+        border-radius: 10px;
+        width: 10%;
+        background-color: #81a594;
+        background-image: none;
+        color: #fafaed;
+        box-shadow: none;
+        transition: 0.5s;
+        &:hover {
+          background-color: #6c8b7d;
+        }
+      }
+    }
+
+    span {
+      display: block;
+      padding: 5px 5px 5px 10px;
+      font: 120% sans-serif;
+      color: #821616;
+      font-style: italic;
+      border-bottom: 1px dotted #00628b;
+    }
   }
 
   .entry {
     overflow: auto;
     margin-top: 1em;
-    border-bottom: 1px dotted #00628B;
+    border-bottom: 1px dotted #00628b;
     min-height: 100px;
 
     img {
-      width: 80px;
+      width: 90px;
+      height: 70px;
       margin-right: 5px;
       margin-bottom: 5px;
       position: absolute;
     }
     h3 {
-      font-size: 130%;
+      font-size: 140%;
       font-family: sans-serif;
       margin-left: 100px;
       margin-bottom: 2px;
       margin-top: 0px;
-      color: #00628B;
+      color: #00628b;
+    }
+    h3 a {
+      text-decoration: none;
+      color: #00628b;
+      padding: 0px 5px 0px 5px;
+      transition: 0.5s;
+    }
+    h3 a:hover {
+      background-color: #f0f0be;
     }
     p,
     div.price_line {
@@ -45,10 +89,9 @@
       }
     }
     .price {
-      color: #81A594;
+      color: #81a594;
       font-weight: bold;
       margin-right: 3em;
     }
-
   }
 }
