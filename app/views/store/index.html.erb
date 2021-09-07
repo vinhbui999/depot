@@ -2,6 +2,8 @@
 <h1 id="store_head"> Pramatic Catalog</h1>
 <div id='store-search'>
   <%= form_tag(store_index_url, method: :get, locale: I18n.locale) do %>
+    <%= select_tag :filter, options_for_select([["Filter", 0],['Increasing Price', 1],["Decreasing Price", 2], ["Title A-Z", 3], ["Title Z-A", 4]],
+     params[:filter])%>
     <%= text_field_tag :search, nil, placeholder: "Search..."%>
     <%= submit_tag "Search"%>
   <% end %>

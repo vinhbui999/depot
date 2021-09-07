@@ -12,15 +12,28 @@ class StoreController < ApplicationController
     end
 
     if params[:search].present?
-      @products = Product.where("title LIKE ?", "%#{params[:search]}%")
+      @products = Product.where("lower(title) LIKE ?", "%#{params[:search].downcase}%")
     end
     if @products.empty?
       flash.now[:error] = "No products match \" #{params[:search]} \"."
       @products = Product.all
-    # else
+      # else
       # flash.now[:notice] = "There are #{@products.count} matches."
     end
-    @products = @products.order(:title).page(params[:page])
+
+    case params[:filter].to_i
+    when 1
+      @products = @products.order(price: :asc).page(params[:page])
+    when 2
+      @products = @products.order(price: :desc).page(params[:page])
+    when 3
+      @products = @products.order(title: :asc).page(params[:page])
+    when 4
+      @products = @products.order(title: :desc).page(params[:page])
+    else
+      @products = @products.order(:title).page(params[:page])
+    end
+
     # end
   end
 
