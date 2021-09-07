@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # Product.delete_all
-User.delete_all
-Cart.delete_all
-LineItem.delete_all
-Order.delete_all
+# User.delete_all
+# Cart.delete_all
+# LineItem.delete_all
+# Order.delete_all
 product = Product.first
 (1..10).each do |i|
     Product.create!(title: "#{Faker::Company.name}", 
@@ -25,5 +25,15 @@ product = Product.first
         price: Faker::Number.decimal(l_digits: 2)
     )
 end unless product
+
 user = AdminUser.where(email: "admin@example.com").first
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') unless user
+
+company = Company.first
+(1..2).each do |i|
+    Company.create!(name: "#{Faker::Company.name}", 
+        address:"#{Faker::Address.full_address}", 
+        phonenumber:"#{Faker::Number.leading_zero_number(digits: 10)}",
+        email: "company#{i}@example.com"
+    )
+end unless company

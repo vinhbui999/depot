@@ -20,11 +20,17 @@
     padding: 10px 5px 5px 5px;
     text-align: center;
     form {
-      input:nth-child(1) {
-        width: 50% !important;
+      select {
+        height: 30px;
+        border: 1px solid #c9d0d6;
         border-radius: 5px;
       }
       input:nth-child(2) {
+        width: 50% !important;
+        border-radius: 5px;
+      }
+      input:nth-child(3) {
+        height: 30px;
         border-radius: 10px;
         width: 10%;
         background-color: #81a594;

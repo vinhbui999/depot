@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+    paginates_per 6
     has_many :line_items
     before_destroy :ensure_not_referenced_by_any_line_item
     has_many :orders, through: :line_items
@@ -10,25 +11,8 @@ class Product < ApplicationRecord
         with: %r/\.(gif|jpg|png)\Z/i,
         message: "Must be a url for gif, jpg or png image."
     }
-    paginates_per 6
 
     DEFAULT_IMG = "chair.png".freeze
-
-
-    # def self.search(search)
-    #     if search 
-    #         products = Product.find_by(title: search)
-    #         if products 
-    #             self.where(product_id: products)
-    #         else
-    #             Product.all
-    #         end
-    #     else
-    #         Product.all
-    #     end
-        
-    # end
-    
 
     private
     def ensure_not_referenced_by_any_line_item
