@@ -20,5 +20,8 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
-
+Before deploy run:
+  RAILS_ENV=production rake assets:precompile
+  bin/webpack
+Commit and push
 * ...
