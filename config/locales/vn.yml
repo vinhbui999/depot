@@ -47,6 +47,10 @@ vn:
       Check: "Đã Chọn"
       Credit Card: "Chuyển Khoản"
       Purchase Order: "Thanh toán Khi Nhận"
+  
+  products:
+    show:
+      add_Cart: "Thêm vào giở hàng"
 
   activerecord:
     errors:

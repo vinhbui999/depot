@@ -84,6 +84,14 @@
     h3 a:hover {
       background-color: #f0f0be;
     }
+    h4{
+      font-size: 120%;
+      font-family: sans-serif;
+      margin-left: 100px;
+      margin-bottom: 2px;
+      margin-top: 0px;
+      color: #00628b;
+    }
     p,
     div.price_line {
       margin-left: 100px;
@@ -95,7 +103,7 @@
       }
     }
     .price {
-      color: #81a594;
+      color: #b46c06;
       font-weight: bold;
       margin-right: 3em;
     }

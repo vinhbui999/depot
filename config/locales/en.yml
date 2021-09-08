@@ -78,6 +78,10 @@ en:
       Credit Card: "Credit Card"
       Purchase Order: "Purchase Order"
   
+  products:
+    show:
+      add_Cart: "Add To Cart"
+
   activerecord:
     errors:
       messages:

@@ -5,4 +5,6 @@ class Company < ApplicationRecord
     validates :email, uniqueness: true, length: {maximum: 255}, format:{ with: VALID_EMAIL_REGEX}, on: :create
     validates :phonenumber, numericality: true, length: {minimum: 10, maximum: 12}
     validates :address, presence: true, length: {maximum: 255}
+
+    has_many :product, dependent: :destroy
 end
