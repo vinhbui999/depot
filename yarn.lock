@@ -5914,9 +5914,9 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/urix/-/urix-0.1.0.tgz"
 
-url-parse@^1.5.3:
-  version "1.5.3"
-  resolved "https://registry.npmjs.org/url-parse/-/url-parse-1.5.3.tgz"
+url-parse@^1.5.9:
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.5.9.tgz#05ff26484a0b5e4040ac64dcee4177223d74675e"
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
