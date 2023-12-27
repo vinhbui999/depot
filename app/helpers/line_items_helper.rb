@@ -1,10 +1,11 @@
-module LineItemsHelper
+# frozen_string_literal: true
 
-    def exchange(price, locale)
-        case locale.to_s
-        when "vn"
-          return (price * 23048.39).ceil(2)
-        else return price
-        end
-      end
+module LineItemsHelper
+  def exchange(price, locale)
+    case locale.to_s
+    when 'vn'
+      (price * 23_048.39).ceil(2)
+    else price
+    end
+  end
 end

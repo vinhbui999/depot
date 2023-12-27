@@ -1,21 +1,23 @@
+# frozen_string_literal: true
+
 ActiveAdmin.setup do |config|
   # == Site Title
   #
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Depot"
+  config.site_title = 'Depot'
 
   config.namespace :admin do |admin|
     admin.build_menu :utility_navigation do |menu|
-      menu.add :label => "Languages" do |lang|
-        lang.add :label => "English",:url => proc { url_for(:locale => 'en') }, id: 'i18n-en', :priority => 1
-        lang.add :label => "Vietnamese",:url => proc { url_for(:locale => 'vn') }, id: 'i18n-es', :priority => 2
+      menu.add label: 'Languages' do |lang|
+        lang.add label: 'English', url: proc { url_for(locale: 'en') }, id: 'i18n-en', priority: 1
+        lang.add label: 'Vietnamese', url: proc { url_for(locale: 'vn') }, id: 'i18n-es', priority: 2
       end
-      menu.add :label => proc { display_name current_active_admin_user },
-                :url => '#',
-                :id => 'current_user',
-                :if => proc { current_active_admin_user? }
+      menu.add label: proc { display_name current_active_admin_user },
+               url: '#',
+               id: 'current_user',
+               if: proc { current_active_admin_user? }
       admin.add_logout_button_to_menu menu
     end
   end
@@ -171,7 +173,7 @@ ActiveAdmin.setup do |config|
   # You can exclude possibly sensitive model attributes from being displayed,
   # added to forms, or exported by default by ActiveAdmin
   #
-  config.filter_attributes = [:encrypted_password, :password, :password_confirmation]
+  config.filter_attributes = %i[encrypted_password password password_confirmation]
 
   # == Localize Date/Time Format
   #

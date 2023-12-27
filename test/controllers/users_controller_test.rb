@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -15,9 +17,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   #   assert_response :success
   # end
 
-  test "should create user" do
+  test 'should create user' do
     assert_difference('User.count') do
-      post users_url, params: { user_form: {email: 'newuser@example.com',name: @user.name, password: User::DEFAULT_PASS, password_confirmation: User::DEFAULT_PASS } }
+      post users_url,
+           params: { user_form: { email: 'newuser@example.com', name: @user.name, password: User::DEFAULT_PASS,
+                                  password_confirmation: User::DEFAULT_PASS } }
     end
 
     assert_redirected_to users_url(locale: I18n.locale)
@@ -34,8 +38,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # end
 
   # test "should update user" do
-  #   patch user_url(@user), params: { user: {email: @user.email, name: @user.name, password: User::DEFAULT_PASS, password_confirmation: User::DEFAULT_PASS} }
-    
+  #   patch user_url(@user), params: { user: {
+  # email: @user.email,
+  # name: @user.name,
+  # password: User::DEFAULT_PASS,
+  # password_confirmation: User::DEFAULT_PASS} }
+
   #   assert_redirected_to users_url(@user, locale: I18n.locale)
   # end
 

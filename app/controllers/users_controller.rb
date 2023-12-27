@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update ]
-  before_action :authorize, only: [:index, :edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update]
+  before_action :authorize, only: %i[index edit update destroy]
   before_action :validate_user, except: %i[new create index]
   # GET /users or /users.json
   def index
     @users = User.order(:name)
-    #return index by name
+    # return index by name
   end
 
   # GET /users/1 or /users/1.json
-  def show
-  end
+  def show; end
 
   # GET /users/new
   def new
@@ -38,16 +39,16 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     user = User.find(session[:user_id])
-    if user && user.authenticate(params[:user_form][:old_password])
-        if @userForm.update(user_params.merge(id: params[:id]))
-          redirect_to users_url, notice: "User #{@userForm.name} was successfully updated."
-        else
-          logger.debug("Errors #{@userForm.errors.count}")
+    if user&.authenticate(params[:user_form][:old_password])
+      if @user_form.update(user_params.merge(id: params[:id]))
+        redirect_to users_url, notice: "User #{@user_form.name} was successfully updated."
+      else
+        logger.debug("Errors #{@user_form.errors.count}")
 
-          render :edit, status: :unprocessable_entity
+        render :edit, status: :unprocessable_entity
       end
     else
-      @userForm.errors.add(:base, "Invalid old password!!!")
+      @user_form.errors.add(:base, 'Invalid old password!!!')
       render :edit
     end
   end
@@ -57,12 +58,12 @@ class UsersController < ApplicationController
     @user = User.find_by(params[:id])
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  rescue_from "User::Error" do |exception|
+  rescue_from 'User::Error' do |exception|
     redirect_to users_url, notice: exception.message
   end
 
@@ -70,7 +71,7 @@ class UsersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @userForm = UserForm.new(user_id: params[:id])
+    @user_form = UserForm.new(user_id: params[:id])
   end
 
   # Only allow a list of trusted parameters through.

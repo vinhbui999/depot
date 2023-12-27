@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 # Preview all emails at http://localhost:3000/rails/mailers/order_mailer
 class OrderMailerPreview < ActionMailer::Preview
-
   # Preview this email at http://localhost:3000/rails/mailers/order_mailer/received
   def received
     order = Order.first
@@ -12,5 +13,4 @@ class OrderMailerPreview < ActionMailer::Preview
     order = Order.first
     OrderMailer.shipped(order)
   end
-
 end
