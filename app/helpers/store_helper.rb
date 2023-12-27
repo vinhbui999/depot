@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module StoreHelper
   def exchange(price, locale)
     case locale.to_s
-    when "vn"
-      return (price * 23048.39).ceil(2)
-    else return price
+    when 'vn'
+      (price * 23_048.39).ceil(2)
+    else price
     end
   end
 
   def page_title
-    @page_title || "Pragmatic Store"
+    @page_title || 'Pragmatic Store'
   end
 end

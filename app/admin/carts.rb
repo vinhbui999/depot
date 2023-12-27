@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Cart do
   config.filters = false
   config.clear_action_items!
@@ -20,9 +22,7 @@ ActiveAdmin.register Cart do
       row :order
       row :created_at
       row :updated_at
-      row :line_items do |line|
-        line.line_items
-      end
+      row :line_items, &:line_items
     end
   end
 end

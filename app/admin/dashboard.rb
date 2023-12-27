@@ -1,9 +1,11 @@
-ActiveAdmin.register_page "Dashboard" do
-  menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
+# frozen_string_literal: true
 
-  content title: proc { I18n.t("active_admin.dashboard") } do
+ActiveAdmin.register_page 'Dashboard' do
+  menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
+
+  content title: proc { I18n.t('active_admin.dashboard') } do
     orders = Order.includes(:cart, :user).limit(2)
-    panel "Recent Orders" do
+    panel 'Recent Orders' do
       table_for orders do
         column :id
         column :cart
@@ -29,5 +31,5 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
-  end # content
+  end
 end

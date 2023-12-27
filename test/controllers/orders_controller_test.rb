@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class OrdersControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -19,13 +21,16 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   # test "should create order" do
   #   assert_difference('Order.count') do
-  #     post orders_url, params: {user_id: @owner.id, order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+  #     post orders_url, params: {user_id: @owner.id,
+  # order: {
+  # address: @order.address,
+  # email: @order.email, name: @order.name, pay_type: @order.pay_type } }
   #   end
 
   #   assert_redirected_to order_url(Order.last)
   # end
 
-  test "should show order" do
+  test 'should show order' do
     get order_url(@order)
     assert_response :success
   end
@@ -36,7 +41,11 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   # end
 
   # test "should update order" do
-  #   patch order_url(@order), params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+  #   patch order_url(@order), params: {
+  # order: {
+  #   address: @order.address,
+  #   email: @order.email,
+  #   name: @order.name, pay_type: @order.pay_type } }
   #   assert_redirected_to order_url(@order, locale: I18n.locale)
   # end
 
@@ -48,7 +57,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   #   assert_redirected_to orders_url
   # end
 
-  test "requires item in cart" do
+  test 'requires item in cart' do
     get new_order_url
     assert_redirected_to store_index_path(locale: I18n.locale)
     assert_equal flash[:notice], 'Your cart is empty'

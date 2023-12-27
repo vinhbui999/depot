@@ -10,6 +10,11 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-*
+# Ignore database's data
+/db_volume/data
+/db_volume/mysql_data/
+/.DS_Store
+/db_volume/.DS_Store
 
 # Ignore all logfiles and tempfiles.
 /log/*

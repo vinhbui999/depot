@@ -1,0 +1,29 @@
+version: "3"
+name: depot-local
+services:
+  web: &web
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+    environment:
+      REDIS_HOST: redis
+    command: sh docker/start.sh
+    entrypoint: []
+    volumes:
+      - .:/app:cached
+    ports:
+      - "3000:3000"
+    env_file:
+      - web.env
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: depot_dev
+    volumes:
+      - ./db_volume/mysql_data:/var/lib/mysql
+      - ./db_volume/mysql_config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf

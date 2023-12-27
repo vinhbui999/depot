@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register User do
   config.filters = false
   permit_params :name, :password, :password_confirmation, :user, :orders
@@ -23,8 +25,8 @@ ActiveAdmin.register User do
   form do |f|
     f.semantic_errors
     if f.object.new_record?
-      f.inputs "New User" do
-        f.semantic_errors *f.object.errors.keys
+      f.inputs 'New User' do
+        f.semantic_errors(*f.object.errors.keys)
         f.inputs new_record: false do
           f.input :name
           f.input :email
@@ -33,7 +35,7 @@ ActiveAdmin.register User do
         end
       end
     else
-      f.inputs "Update User" do
+      f.inputs 'Update User' do
         f.input :name, require: true
         f.input :email, require: true
       end
